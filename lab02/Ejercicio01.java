@@ -22,8 +22,9 @@ public class Ejercicio01 {
 
     public void invertir (){
         //Imprimir lista invertida
+        System.out.println("Se imprime la lista invertida");
         for (int i = invertir.size()-1; i >= 0; i--) {
-            System.out.println(invertir.get(i));
+            System.out.print("[" + invertir.get(i) + "]");
         }
     }
 }
