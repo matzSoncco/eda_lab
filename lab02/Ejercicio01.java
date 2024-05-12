@@ -1,7 +1,7 @@
 //INVERTIR UN ARREGLO DE ENTEROS
 import java.util.*;
 public class Ejercicio01 {
-    ArrayList<Integer> invertir = new ArrayList<>();
+    private ArrayList<Integer> invertir = new ArrayList<>();
     public static void main (String[] args){
         Ejercicio01 ejercicio = new Ejercicio01();
         ejercicio.ingresar(); // Se llama al método 'ingresar'
