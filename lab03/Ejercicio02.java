@@ -1,16 +1,26 @@
-import java.awt.*;
+import java.util.*;
 public class Ejercicio02 {
     public static void main (String[] args){
-        Objeto obj1 = new Objeto(255, 0, 0, "Metal");
-        obj1.setNombre("Objeto1");
+        Scanner sc = new Scanner (System.in);
+
+        System.out.println("Ingrese el objeto:");
+        String objeto = sc.next();
+
+        System.out.println("Ingrese los valores para R, G y B");
+        int r = sc.nextInt();
+        int g = sc.nextInt();
+        int b = sc.nextInt();
+
+        System.out.println("Ingrese el material del objeto");
+        String material = sc.next();
+        
+        Objeto obj1 = new Objeto(r, g, b, material, objeto);
         obj1.mostrar();
     }
 }
 
 class Color{
-    static int r;
-    static int g;
-    static int b;
+    int r, g, b;
     
     public Color(int r, int g, int b){
         setRed(r);
@@ -22,7 +32,7 @@ class Color{
         this.r = r;
     }
 
-    public static int getRed() {
+    public int getRed() {
         return r;
     }
 
@@ -30,7 +40,7 @@ class Color{
         this.g = g;
     }
 
-    public static int getGreen() {
+    public int getGreen() {
         return g;
     }
 
@@ -38,22 +48,27 @@ class Color{
         this.b = b;
     }
 
-    public static int getBlue() {
+    public int getBlue() {
         return b;
     }
 
     public String getColorName() {
-        if (getRed() == 255 || getGreen() == 0 || getBlue() == 0){
-            return "Rojo";
+        /*
+         * Este método es amplio ya que se necesitaría el valor rgb de cada color
+         * De este modo solo se colocan los 3 colores principales
+         */
+        if (getRed() == 255 && getGreen() == 0 && getBlue() == 0){
+            return "rojo";
         }
-        else if (getRed() == 0 || getGreen() == 255 || getBlue() == 0){
-            return "Verde";
+        else if (getRed() == 0 && getGreen() == 255 && getBlue() == 0){
+            return "verde";
         }
-        else if (getRed() == 0 || getGreen() == 0 || getBlue() == 255){
-            return "Azul";
+        else if (getRed() == 0 && getGreen() == 0 && getBlue() == 255){
+            return "azul";
         }
         else{
-            return "wa";
+            //Al no tener referencia de cierto colo se pone variado
+            return "variado";
         }
     }
 }
@@ -76,11 +91,12 @@ class Material extends Color{
 }
 
 class Objeto extends Material{
-    public Objeto(int r, int g, int b, String material) {
-        super(r, g, b, material);
-    }
-
     String nombre;
+
+    public Objeto(int r, int g, int b, String material, String nombre) {
+        super(r, g, b, material);
+        setNombre(nombre);
+    }
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
